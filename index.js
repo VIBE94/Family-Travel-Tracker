@@ -1,6 +1,8 @@
 import express from "express";
 import pg from "pg";
-
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+const __dirname = dirname(fileURLToPath(import.meta.url));
 import bodyParser from "body-parser";
 
 const db = new pg.Client({
@@ -16,8 +18,8 @@ db.connect();
 
 const app = express();
 const port = 3000;
-app.use(express.static('public'))
-app.listen(3000,(req,res)=>{
+app.use(express.static(__dirname+'public'))
+app.listen(process.env.PORT || 3000, function () {
   console.log("Server started on port 3000");
 })
 app.use(bodyParser.urlencoded({ extended: true }));
