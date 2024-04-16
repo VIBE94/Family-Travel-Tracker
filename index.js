@@ -8,8 +8,8 @@ import bodyParser from "body-parser";
 const db = new pg.Client({
   user: "postgres",
   host: "localhost",
-  database: "world",
-  password: "Arya@8955",
+  database:'',
+  password: '',
   port:5432
 })
 
@@ -17,6 +17,7 @@ db.connect();
 
 
 const app = express();
+const port = 3000;
 app.use(express.static(__dirname+'public'))
 app.listen(process.env.PORT || 3000, function () {
   console.log("Server started on port 3000");
